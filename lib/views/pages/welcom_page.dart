@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/widget_tree.dart';
-import 'package:flutter_app/views/widgets/hero_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class WelcomPage extends StatelessWidget {
   const WelcomPage({super.key});
@@ -13,8 +13,35 @@ class WelcomPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            HeroWidget(),
+            Lottie.asset("assets/lotties/welcome.json"),
+            FittedBox(
+              child: Text(
+                "Flutter Map",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50.0,
+                  letterSpacing: 50.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 20.0),
             FilledButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return WidgetTree();
+                    },
+                  ),
+                );
+              },
+              style: FilledButton.styleFrom(
+                minimumSize: Size(double.infinity, 40.0)
+              ),
+              child: Text("Get Started"),
+            ),
+            TextButton(
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
